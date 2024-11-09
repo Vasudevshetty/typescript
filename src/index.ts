@@ -36,3 +36,33 @@ const student: {
   age: 10,
   isAdult: (age: number) => (age > 18 ? true : false),
 };
+
+// better way of doing the above is
+
+type student = {
+  name: string;
+  age: number;
+  isAdult: (age: number) => boolean;
+};
+
+const visu: student = { name: "vasu", age: 10, isAdult: (age) => age > 18 };
+
+function kgToLbs(weight: number | string): number {
+  if (typeof weight === "number") return weight * 2.2;
+  else return parseInt(weight) * 2.2;
+}
+
+type Draggable = {
+  drag: () => void;
+};
+
+type Resizeable = {
+  resize: () => void;
+};
+
+type UIWidget = Draggable & Resizeable;
+
+let textBox: UIWidget = { drag: () => {}, resize: () => {} };
+
+type Quantity = 50 | 51;
+let quantity: Quantity = 50;
